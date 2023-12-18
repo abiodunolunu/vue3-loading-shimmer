@@ -1,0 +1,52 @@
+{
+  "name": "vue3-loading-shimmer",
+  "version": "0.0.0-beta.1",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/vue3-loading-shimmer.umd.cjs",
+  "module": "dist/vue3-loading-shimmer.js",
+  "unpkg": "dist/vue3-loading-shimmer.iife.js",
+  "types": "./dist/vue3-loading-shimmer.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-loading-shimmer.js",
+      "require": "./dist/vue3-loading-shimmer.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "description": "A customizable Vue 3 component for creating loading shimmer effects",
+  "keywords": [
+    "vue-loading",
+    "vue3-shimmer",
+    "vue-shimmer",
+    "loading effect",
+    "vue3-loading"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abiodunolunu/vue3-loading-shimmer"
+  },
+  "url": "https://github.com/abiodunolunu/vue3-loading-shimmer",
+  "bugs": {
+    "email": "abiodunolunu@gmail.com"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "sass": "^1.69.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-css-injected-by-js": "^3.3.0",
+    "vite-plugin-dts": "^3.6.4",
+    "vue-tsc": "^1.8.25"
+  }
+}
