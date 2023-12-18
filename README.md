@@ -50,8 +50,17 @@ Alternatively, you can use it directly:
 <!-- your-component.vue -->
 
 <template>
-  <vue3-loading-shimmer />
+  <vue3-loading-shimmer class="whatever" />
 </template>
+
+<style>
+// you must manually enter its width and height and other properties because we want to give you full control
+.whatever {
+  height: 200px;
+  width: 200px;
+  border-radius: 0.5rem;
+}
+</style>
 
 <script>
 import { defineComponent } from "vue";
@@ -68,8 +77,8 @@ export default defineComponent({
 ### Browser with CDN
 
 ```html
-<script src="https://unpkg.com/vue@3.0.0"></script>
-<script src="https://unpkg.com/vue3-loading-shimmer/dist/vue3-loading-shimmer.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue3-loading-shimmer"></script>
 ```
 
 ```javascript
@@ -78,7 +87,7 @@ const App = {
   //Component code...
 };
 const app = createApp(App);
-app.component("vue3LoadingShimmer", vue3LoadingShimmer);
+app.component("vue3LoadingShimmer", Vue3LoadingShimmer);
 app.mount("#app");
 ```
 
