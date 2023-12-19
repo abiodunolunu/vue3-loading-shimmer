@@ -49,8 +49,15 @@ Alternatively, you can use it directly:
 ```vue
 <!-- your-component.vue -->
 
+<script setup>
+import { defineComponent } from "vue";
+import Shimmer from "vue3-loading-shimmer";
+// This "Shimmer" can be anything you can to call it e.g:
+// import MyShimmer from "vue3-loading-shimmer";
+</script>
+
 <template>
-  <vue3-loading-shimmer class="whatever" />
+  <Shimmer class="whatever" />
 </template>
 
 <style>
@@ -61,17 +68,6 @@ Alternatively, you can use it directly:
   border-radius: 0.5rem;
 }
 </style>
-
-<script>
-import { defineComponent } from "vue";
-import vue3LoadingShimmer from "vue3-loading-shimmer";
-
-export default defineComponent({
-  components: {
-    vue3LoadingShimmer,
-  },
-});
-</script>
 ```
 
 ### Browser with CDN
@@ -87,17 +83,17 @@ const App = {
   //Component code...
 };
 const app = createApp(App);
-app.component("vue3LoadingShimmer", Vue3LoadingShimmer);
+app.component("Shimmer", Vue3LoadingShimmer);
 app.mount("#app");
 ```
 
 ## Available Props
 
-| Prop         | Description                                                                      | Type   | Default         | Required |
-| ------------ | -------------------------------------------------------------------------------- | ------ | --------------- | -------- |
-| bgColor      | Background color of the wrapper                                                  | String | "#d3d3d3"       | false    |
-| shimmerColor | Color of the shimmer effect (**MUST BE IN HEX-FORMAT**) e.g: "#RRGGBB" or "#RGB" | String | "#FFFFFF"       | false    |
-| duration     | Duration of the shimmer animation in milliseconds                                | Number | 1400            | false    |
-| direction    | Direction of the shimmer effect                                                  | String | "left-to-right" | false    |
+| Prop         | Description                                                                      | Type                                                                | Default         | Required |
+| ------------ | -------------------------------------------------------------------------------- | ------------------------------------------------------------------- | --------------- | -------- |
+| bgColor      | Background color of the wrapper                                                  | String                                                              | "#d3d3d3"       | false    |
+| shimmerColor | Color of the shimmer effect (**MUST BE IN HEX-FORMAT**) e.g: "#RRGGBB" or "#RGB" | String                                                              | "#FFFFFF"       | false    |
+| duration     | Duration of the shimmer animation in milliseconds                                | Number                                                              | 1400            | false    |
+| direction    | Direction of the shimmer effect                                                  | "left-to-right" , "right-to-left", "top-to-bottom", "bottom-to-top" | "left-to-right" | false    |
 
 Customize the component by leveraging these props to meet your specific needs.
