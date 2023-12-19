@@ -92,7 +92,7 @@ app.mount("#app");
 | Prop         | Description                                                                      | Type                                                                | Default         | Required |
 | ------------ | -------------------------------------------------------------------------------- | ------------------------------------------------------------------- | --------------- | -------- |
 | bgColor      | Background color of the wrapper                                                  | String                                                              | "#d3d3d3"       | false    |
-| shimmerColor | Color of the shimmer effect (**MUST BE IN HEX-FORMAT**) e.g: "#RRGGBB" or "#RGB" | String                                                              | "#FFFFFF"       | false    |
+| shimmerColor | Color of the shimmer effect (**MUST BE IN HEX-FORMAT**) e.g: "#RRGGBB" or "#RGB" | String                                                              | "#ffffff"       | false    |
 | duration     | Duration of the shimmer animation in milliseconds                                | Number                                                              | 1400            | false    |
 | direction    | Direction of the shimmer effect                                                  | "left-to-right" , "right-to-left", "top-to-bottom", "bottom-to-top" | "left-to-right" | false    |
 

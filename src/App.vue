@@ -10,9 +10,10 @@ import Shimmer from "./components/Vue3LoadingShimmer.vue";
         <Shimmer class="tweet__avatar" />
         <div class="tweet__details">
           <div class="tweet__details-info">
-            <Shimmer class="tweet__name" />
+            <Shimmer class="tweet__name" shimmer-color="#fa3" />
             <Shimmer class="tweet__handle" />
-            <Shimmer class="tweet__time"> </Shimmer>
+            <Shimmer class="tweet__time" bg-color="pink" shimmer-color="#afc">
+            </Shimmer>
           </div>
 
           <Shimmer class="tweet__details-content" />

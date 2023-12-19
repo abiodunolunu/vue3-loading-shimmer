@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { hexToRgb } from "../utils/functions";
+
 interface Props {
   bgColor?: string;
   shimmerColor?: string;
@@ -11,14 +11,36 @@ interface Props {
     | "top-to-bottom"
     | "bottom-to-top";
 }
+
 const props = withDefaults(defineProps<Props>(), {
   bgColor: "#d3d3d3",
-  shimmerColor: "#FFFFFF",
+  shimmerColor: "#ffffff",
   duration: 1400,
   direction: "left-to-right",
 });
 
-const shimmerStyle = computed(() => {
+function hexToRgb(hexCode: string) {
+  hexCode = hexCode.split("#")[1];
+
+  if (hexCode.length === 3) {
+    hexCode = hexCode
+      .split("")
+      .map((v) => `${v}${v}`)
+      .join("");
+  }
+
+  const _r = hexCode.slice(0, 2);
+  const _g = hexCode.slice(2, 4);
+  const _b = hexCode.slice(4, 6);
+
+  const r = parseInt(_r, 16);
+  const g = parseInt(_g, 16);
+  const b = parseInt(_b, 16);
+
+  return `${r},${g},${b}`;
+}
+
+const shimmerGradient = computed(() => {
   const rgb = hexToRgb(props.shimmerColor);
   return `linear-gradient(90deg,
             rgba(${rgb}, 0) 0%,
@@ -34,17 +56,14 @@ const animationDuration = computed(() => `${props.duration}ms`);
 
 <template>
   <div
-    class="vue3-loading-shimmer__wrapper"
-    :style="{ backgroundColor: bgColor }"
-  >
-    <div
-      :style="{
-        backgroundImage: shimmerStyle,
-        animationDuration: animationDuration,
-      }"
-      :class="`vue3-loading-shimmer vue3-loading-shimmer__${direction}`"
-    ></div>
-  </div>
+    class="vue3-loading-shimmer"
+    :class="`vue3-loading-shimmer__${direction}`"
+    :style="{
+      '--vue3-loading-shimmer-bg': bgColor,
+      '--vue3-loading-shimmer-shimmerBg': shimmerGradient,
+      '--vue3-loading-shimmer-duration': animationDuration,
+    }"
+  ></div>
 </template>
 
 <style lang="scss" scoped>
@@ -53,38 +72,51 @@ const animationDuration = computed(() => `${props.duration}ms`);
   padding: 0;
   margin: 0;
 }
-.vue3-loading-shimmer__wrapper {
+.vue3-loading-shimmer {
   position: relative;
   overflow: hidden;
-}
+  background-color: var(--vue3-loading-shimmer-bg);
 
-.vue3-loading-shimmer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-image: var(--vue3-loading-shimmer-shimmerBg);
+    animation-duration: var(--vue3-loading-shimmer-duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
 
   &__left-to-right {
-    transform: translateX(-100%);
-    animation-name: shimmerLeftToRight;
+    &::before {
+      transform: translateX(-100%);
+      animation-name: shimmerLeftToRight;
+    }
   }
 
   &__right-to-left {
-    transform: translateX(100%);
-    animation-name: shimmerRightToLeft;
+    &::before {
+      transform: translateX(100%);
+      animation-name: shimmerRightToLeft;
+    }
   }
 
   &__top-to-bottom {
-    transform: translateY(-100%);
-    animation-name: shimmerTopToBottom;
+    &::before {
+      transform: translateY(-100%);
+      animation-name: shimmerTopToBottom;
+    }
   }
 
   &__bottom-to-top {
-    transform: translateY(100%);
-    animation-name: shimmerBottomToTop;
+    &::before {
+      transform: translateY(100%);
+      animation-name: shimmerBottomToTop;
+    }
   }
 }
 
