@@ -1,6 +1,6 @@
 {
   "name": "vue3-loading-shimmer",
-  "version": "0.0.0-beta.3",
+  "version": "0.0.0-beta.5",
   "license": "MIT",
   "type": "module",
   "main": "./dist/vue3-loading-shimmer.umd.cjs",
@@ -28,7 +28,12 @@
     "type": "git",
     "url": "https://github.com/abiodunolunu/vue3-loading-shimmer"
   },
-  "url": "https://vue3-loading-shimmer.netlify.app",
+  "homepage": "https://vue3-loading-shimmer.netlify.app",
+  "author": {
+    "name": "Abiodun Olunu",
+    "url": "https://github.com/abiodunolunu",
+    "email": "abiodunolunu@gmail.com"
+  },
   "bugs": {
     "email": "abiodunolunu@gmail.com"
   },
